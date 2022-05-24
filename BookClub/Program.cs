@@ -10,11 +10,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddDbContext<BookclubContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// Add services for book table to the container.
 builder.Services.AddScoped<ICrudRepository<Book, int>, BooksRepository>();
 builder.Services.AddScoped<ICrudService<Book, int>, BooksService>();
+//Add services for member table to container
+builder.Services.AddScoped<ICrudRepository<Member, int>, MembersRepository>();
+builder.Services.AddScoped<ICrudService<Member, int>, MembersService>();
+
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddSwaggerGen(c =>

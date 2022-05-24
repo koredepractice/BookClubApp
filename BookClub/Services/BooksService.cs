@@ -6,9 +6,9 @@ namespace BookClubApp.Services
     public class BooksService : ICrudService<Book, int>
     {
         private readonly ICrudRepository<Book, int> _booksRepository;
-        public BooksService(ICrudRepository<Book, int> todoRepository)
+        public BooksService(ICrudRepository<Book, int> booksRepository)
         {
-            _booksRepository = todoRepository;
+            _booksRepository = booksRepository;
         }
         public void Add(Book element)
         {

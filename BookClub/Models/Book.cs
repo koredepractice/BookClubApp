@@ -16,7 +16,7 @@ namespace Bookclub.Models
             public string? AuthorName { get; set; }
 
             [Required(ErrorMessage = "Year of Publication is required")]
-            [MinLength(4, ErrorMessage = "Length of publication year cannot be less than 4 characters")]
+     
            public int YearOfPublication { get; set; }
 
 

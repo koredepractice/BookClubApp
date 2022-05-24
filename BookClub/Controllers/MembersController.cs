@@ -7,52 +7,52 @@ namespace BookClubApp.Controllers
 {
     [ApiController]
     [Route("[controller]")]//URL: https://localhost:7167
-    public class BooksController : ControllerBase
+    public class MembersController : ControllerBase
     {
-        private readonly ICrudService<Book, int> _booksService;
-        public BooksController(ICrudService<Book, int> booksService)
+        private readonly ICrudService<Member, int> _membersService;
+        public MembersController(ICrudService<Member, int> membersService)
         {
-            _booksService = booksService;
+            _membersService = membersService;
         }
 
         // GET all action
         [HttpGet] // auto returns data with a Content-Type of application/json
-        public ActionResult<List<Book>> GetAll() => _booksService.GetAll().ToList();
+        public ActionResult<List<Member>> GetAll() => _membersService.GetAll().ToList();
 
         // GET by Id action
         [HttpGet("{id}")]
-        public ActionResult<Book> Get(int id)
+        public ActionResult<Member> Get(int id)
         {
-            var book = _booksService.Get(id);
-            if (book is null) return NotFound();
-            else return book;
+            var member = _membersService.Get(id);
+            if (member is null) return NotFound();
+            else return member;
         }
 
         // POST action
         [HttpPost]
-        public IActionResult Create(Book book)
+        public IActionResult Create(Member member)
         {
             // Runs validation against model using data validation attributes
             if (ModelState.IsValid)
             {
-                _booksService.Add(book);
-                return CreatedAtAction(nameof(Create), new { id = book.BookId },book);
+                _membersService.Add(member);
+                return CreatedAtAction(nameof(Create), new { id = member.MemberId }, member);
             }
             return BadRequest();
         }
 
         // PUT action
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Book book)
+        public IActionResult Update(int id, Member member)
         {
-            var existingBooks = _booksService.Get(id);
-            if (existingBooks is null || existingBooks.BookId != id)
+            var existingMembers = _membersService.Get(id);
+            if (existingMembers is null || existingMembers.MemberId != id)
             {
                 return BadRequest();
             }
             if (ModelState.IsValid)
             {
-                _booksService.Update(existingBooks, book);
+                _membersService.Update(existingMembers, member);
                 return NoContent();
             }
             return BadRequest();
@@ -62,9 +62,9 @@ namespace BookClubApp.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var book = _booksService.Get(id);
-            if (book is null) return NotFound();
-            _booksService.Delete(id);
+            var member = _membersService.Get(id);
+            if (member is null) return NotFound();
+            _membersService.Delete(id);
             return NoContent();
         }
     }
