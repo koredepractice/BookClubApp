@@ -6,7 +6,7 @@ using BookClubApp.Services;
 namespace BookClubApp.Controllers
 {
     [ApiController]
-    [Route("[controller]")]//URL: https://localhost:7167
+    [Route("[controller]")]//URL: https://localhost:7167/
     public class BooksController : ControllerBase
     {
         private readonly ICrudService<Book, int> _booksService;

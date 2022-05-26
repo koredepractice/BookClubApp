@@ -32,7 +32,6 @@ namespace BookClubApp.Services
         {
             old.MemberName = newT.MemberName;
             old.Email = newT.Email;
-            old.Rating = newT.Rating;
             _membersRepository.Update(old);
             _membersRepository.Save();
         }

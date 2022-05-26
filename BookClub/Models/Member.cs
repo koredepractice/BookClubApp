@@ -12,7 +12,6 @@ namespace Bookclub.Models
         [Required(ErrorMessage = "Please enter your email")]
         public string? Email { get; set; }
 
-        [Required(ErrorMessage = "Please enter a numerical rating out of 10, 1 = lowest and 10 = highest")]
-        public int Rating { get; set; }
+
     }
 }

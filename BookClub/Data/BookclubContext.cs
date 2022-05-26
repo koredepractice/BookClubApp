@@ -11,6 +11,6 @@ namespace Bookclub.Data
         }
         public DbSet<Book> Books { get; set; }
         public DbSet<Member> Members { get; set; }
-        //public DbSet<Rating> Ratings { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
     }
 }
